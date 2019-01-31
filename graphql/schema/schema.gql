@@ -1,6 +1,6 @@
 
 type Query {
-  business: Business
+  business(id: String!): Business
   search(term: String, location: String!): Search
 }
 

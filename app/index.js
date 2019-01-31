@@ -1,26 +1,9 @@
 const express = require('express');
-const axios = require('axios');
 const graphqlHTTP = require('express-graphql');
 const schema = require('../graphql/schema');
+const { createFetcher } = require('../utils');
 
-// const resolvers = require('../graphql/resolvers')
-
-const createFetcher = (apiKey) => {
-  const instance = axios.create({
-    method: 'POST',
-    url: 'https://api.yelp.com/v3/graphql',
-    headers: { Authorization: `Bearer ${apiKey}` },
-  });
-
-  instance.query = (queryString, variables) => instance({
-    data: {
-      query: queryString,
-      variables,
-    },
-  });
-
-  return instance;
-};
+const resolvers = require('../graphql/resolvers');
 
 const yelpFetcher = createFetcher(process.env.YELP_API_KEY);
 
@@ -37,6 +20,7 @@ app.use('/graphql', graphqlHTTP({
           search(term: $term, location: $location) {
             total
             business {
+              id
               name
               is_closed
               phone

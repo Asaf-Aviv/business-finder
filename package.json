@@ -2,9 +2,9 @@
   "name": "yelp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "server": "nodemon server/server",
+    "server": "nodemon server",
     "client": "cd client && npm start",
     "dev": "concurrently --kill-others-on-fail \"npm:server\" \"npm:client\"",
     "test": "jest --forceExit",
