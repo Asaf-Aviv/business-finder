@@ -10,9 +10,10 @@ const App = () => {
   useEffect(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
-        ({ coords: { latitude, longitude } }) => {
-          setUserLatitude(latitude);
-          setUserLongitude(longitude);
+        ({ coords }) => {
+          console.log(coords);
+          setUserLatitude(coords.latitude);
+          setUserLongitude(coords.longitude);
         },
       );
     }
