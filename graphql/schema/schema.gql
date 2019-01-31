@@ -1,0 +1,90 @@
+
+type Query {
+  business: Business
+  search(term: String, location: String!): Search
+}
+
+type Search {
+  total: Int!
+  business: [Business!]!
+}
+
+type Category {
+  title: String
+  alias: String
+  parent_categories: Category
+}
+
+type Location {
+  address1: String
+  address2: String
+  address3: String
+  city: String
+  state: String
+  postal_code: String
+  country: String
+  formatted_address: String
+}
+
+type Coordinates {
+  latitude: String
+  longitude: String
+}
+
+type Review {
+  id: String
+  text: String
+  rating: Int
+  time_created: String
+  url: String
+  user: User
+}
+
+type User {
+  id: String
+  profile_url: String
+  name: String
+  image_url: String
+}
+
+type Open {
+  is_overnight: Boolean
+  end: String
+  start: String
+  day: Int
+}
+
+type Hours {
+  hours_type: String
+  is_open_now: Boolean
+  open: Open
+}
+
+type Restaurant_Reservations {
+  url: String
+}
+
+type Transactions {
+  restaurant_reservations: Restaurant_Reservations
+}
+
+type Business {
+  name: String
+  id: String
+  is_claimed: Boolean
+  is_closed: Boolean
+  url: String
+  phone: String
+  display_phone: String
+  review_count: Int
+  rating: Float
+  price: String
+  distance: Float
+  categories: Category
+  photos: String
+  location: Location
+  coordinates: Coordinates
+  hours: Hours
+  reviews: [Review!]!
+  transactions: Transactions
+}

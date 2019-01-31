@@ -1,0 +1,34 @@
+{
+  "name": "yelp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server/server",
+    "client": "cd client && npm start",
+    "dev": "concurrently --kill-others-on-fail \"npm:server\" \"npm:client\"",
+    "test": "jest --forceExit",
+    "watch": "jest --watch",
+    "build": "cd client && npm run build",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "9.0.0",
+    "concurrently": "^4.1.0",
+    "eslint": "5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}
